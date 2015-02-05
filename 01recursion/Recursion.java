@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class Recursion{
-   public static  double guess = 1;
-
 
     public String name(){
 	return "Kim,Yubin";
@@ -45,31 +43,32 @@ public class Recursion{
     public static double sqrt(double n){
 	if(n < 0){
 	    throw new IllegalArgumentException();
-	}
-	if(n==0){
-	    return 0;
 	}else{
-	    if(guess*guess/n > .9999999999999999999){
-		setGuess(n);
-		sqrt(n);
-	    }else{
-		return guess;
-	    }
+	    return sqrth(n, 1);
 	}
     } 
    
-    public static void setGuess(double n){
+    public static double setGuess(double n, double guess){
 	guess = (n/guess + guess)/2;
-    }
-    
-    public static void main(String[] args){
-	System.out.println(sqrt(100));
+	return guess;
     }
 
+    public static boolean goodRange(double n, double guess){
+	if(Math.abs((n - guess*guess)/n) < 0.001){
+	    return true;
+	}else{
+	    return false;
+	}
+    }
 
+    public static double sqrth(double n, double guess){
+	if(goodRange(n, guess)){
+	    return setGuess(n,guess);
+	}else{
+	    return sqrth(n, setGuess(n,guess));
+	}
 
-
-
+    }
 
 
 }
