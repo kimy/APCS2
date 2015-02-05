@@ -6,7 +6,7 @@ public class Recursion{
 	return "Kim,Yubin";
     }
 
-    public static boolean outOfRange(int n){
+    public boolean outOfRange(int n){
 	if(n<0){
 	    return true;
 	}else{
@@ -14,7 +14,7 @@ public class Recursion{
 	}
     }
 
-    public static int fact(int n){
+    public int fact(int n){
 	if(outOfRange(n)){
 	    throw new IllegalArgumentException();
 	}
@@ -25,7 +25,7 @@ public class Recursion{
 	}
     }
     
-    public static int fib(int n){
+    public int fib(int n){
 	if(outOfRange(n)){
 	    throw new IllegalArgumentException();
 	}
@@ -40,7 +40,7 @@ public class Recursion{
 	}
     }
     
-    public static double sqrt(double n){
+    public double sqrt(double n){
 	if(n < 0){
 	    throw new IllegalArgumentException();
 	}else{
@@ -48,12 +48,12 @@ public class Recursion{
 	}
     } 
    
-    public static double setGuess(double n, double guess){
+    public double setGuess(double n, double guess){
 	guess = (n/guess + guess)/2;
 	return guess;
     }
 
-    public static boolean goodRange(double n, double guess){
+    public boolean goodRange(double n, double guess){
 	if(Math.abs((n - guess*guess)/n) < 0.001){
 	    return true;
 	}else{
@@ -61,7 +61,7 @@ public class Recursion{
 	}
     }
 
-    public static double sqrth(double n, double guess){
+    public double sqrth(double n, double guess){
 	if(goodRange(n, guess)){
 	    return setGuess(n,guess);
 	}else{
@@ -69,6 +69,5 @@ public class Recursion{
 	}
 
     }
-
 
 }
