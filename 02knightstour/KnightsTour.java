@@ -42,7 +42,7 @@ public class KnightsTour{
     }
 
     public void solve(int startx, int starty){
-	board[starty][startx]==0;
+	board[starty][startx]==1;
 
     }
 
@@ -52,6 +52,12 @@ public class KnightsTour{
 	System.out.println(this);
 	wait(20);
 	
+	if(solveDone){
+	    return true;
+	}
+
+		
+
 	return false;
     }
 
