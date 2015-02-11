@@ -55,6 +55,7 @@ public class KnightsTour{
 	if(solveDone){
 	    return true;
 	}
+	
 
 		
 
@@ -72,5 +73,8 @@ public class KnightsTour{
 	return true;
     }
 
+    public boolean move(int x, int y){
+      
+    }
 
 }
