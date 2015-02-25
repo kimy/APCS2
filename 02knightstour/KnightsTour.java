@@ -32,8 +32,20 @@ public class KnightsTour{
     }
 
     public String toString(){
-	String ans = "\n";
+	String ans = "";
 	//build your knights tour here...
+	for (int[] row : board) {
+	    ans += "\n";
+	    for (int n : row) {
+		if (n < 100)
+		    ans += " ";
+		if (n < 10)
+		    ans += " ";
+		ans += n;
+	    }
+	    ans += "\n";
+	}
+
 	return hide + go(0,0) + ans + "\n" + show;
     }
 
@@ -46,20 +58,6 @@ public class KnightsTour{
 	    }
 	}			
     }
-
-    public KnightsTour(int size, int startx, int starty){
-	if(size < 1){
-	    throw new IllegalArgumentException("invalid size");
-	}
-	board = new int[size][size];
-	for(int i=0; i<size; i++){
-	    for(int j=0; j<size; j++){
-		board[i][j] = 0;
-	    }
-	}
-       
-    }
-
     
     public boolean solve(){
 	return solve(0,0);				
@@ -69,13 +67,11 @@ public class KnightsTour{
 	return solve(startx, starty, 1);
 
     }
-
-
 		
     public boolean solve(int x,int y,int currentMoveNumber){
-	System.out.println(this);
-	wait(20);
-
+	//System.out.println(this);
+	//wait(20);
+	try{
 	if(outofBounds(x) || outofBounds(y)){
 	    return false;
 	}
@@ -96,6 +92,8 @@ public class KnightsTour{
 	    return true;
 	}
 	board[x][y] = 0;
+    }
+	catch (Exception e){};
 	return false;
        
     }
