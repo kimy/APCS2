@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class cowTravel{
+public class ctravel{
 
     private char [][] pasture;
     private int T, r1, c1, r2, c2;
@@ -84,7 +84,7 @@ public class cowTravel{
     }
 
 
-    public cowTravel(String fileName) throws FileNotFoundException{
+    public ctravel(String fileName) throws FileNotFoundException{
 	importFile(fileName);
 	//System.out.println(go(r1, c1));
     }
@@ -95,7 +95,7 @@ public class cowTravel{
 	//when the time is up, check to see if it's at the right position
 	//if it is at the right position...
 	//hmm how would you do the rest from here? 
-	cowTravel A = new cowTravel("ctravel.in");
+	ctravel A = new ctravel("ctravel.in");
 	PrintWriter writer = new PrintWriter("ctravel.out");
 	writer.println(A.go());
 	writer.close();
