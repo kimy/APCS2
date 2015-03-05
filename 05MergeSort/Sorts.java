@@ -3,52 +3,60 @@ import java.util.*;
 public class Sorts{
 
     public static void mergesort(int[]array){
-	//make an ArrayList
-	ArrayList <Comparable> aL = new ArrayList <Comparable>();
-	//copy the values over 
-
-	for(int a = 0 ; a < array.length ; a++){
-	    aL.add(array[a]);
-	}
-
-	mhelp(aL);
-
-	for(int b = 0 ; b < aL.size() ; b++){
-	    array[b] = (int)(aL.get(b));
-	}
-
-    }
-
-    public static void mhelp(ArrayList <Comparable> aL){
-	if(aL.size() < 2){
+	if(int.length < 2){
 	    return;
 	}
 
-	//split array
-	ArrayList <Comparable> a = new ArrayList <Comparable>();
-	ArrayList <Comparable> b = new ArrayList <Comparable>();
-	boolean temp = true;
+	int[]a = new int[array.length /2];
+	int[]b = new int[array.length = a.length];
+
 	
-	if(temp = !temp){
-	    a.add(aL.remove(0));
-	}else{
-	    b.add(aL.remove(0));
-	}
 
-	//sort each half
-	mhelp(a);
-	mhelp(b);
-
-	//merge them
-	while(a.size() > 0 && b.size() > 0){
-	    if(a.get(0).compareTo(b.get(0)) > 0){
-	    aL.add(a.remove(0));
-	    }else{
-		aL.add(b.remove(0));
-	    }
-	}
-	aL.addAll(a);
-	aL.addAll(b);
     }
+
+    public static int[] split(int[]ary){
+	if(ary.length == 1){
+	    return ary;
+	}
+
+	int[]a = Arrays.CopyOfRange(ary, 0, ary.length/2);
+	int[]b = Arrays.CopyOfRange(ary, ary.length/2, ary.length);
+	return merge(split(a), split(b));
+
+
+    }
+
+    public static int[] merge(int[]a, int[]b){
+	int[] res = new int[a.length + b.length];
+	int x1 = 0;
+	int x2 = 0;
+
+	while(x1<=a.length && x2 <=b.length){
+	    if(x1== a.length){
+		for(; x2 < b.length; x2++){
+		    res[x1 + x2] = b[x2];
+		}
+		return res;
+	    }
+	    if(x2 == b.length){
+		for(;x1 < a.length; x1++){
+		    res[x1+x2] = a[x1];
+		}
+		return res;
+	    }
+	    if(a[x1] < b[x2]){
+		res[x1+x2] = a[x1];
+		x1++;
+	    }else{
+		res[x1+x2] = b[x2];
+		x2++;
+	    }
+
+	}
+	return res;
+
+    }
+
+   
 
 }
