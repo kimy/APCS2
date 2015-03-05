@@ -3,52 +3,70 @@ import java.util.*;
 public class Sorts{
 
     public static void mergesort(int[]array){
-       
-
-	//mhelp(aL);
-
-	for(int b = 0 ; b < aL.size() ; b++){
-	    array[b] = (int)(aL.get(b));
+	int[] p = Sorts.split(array);
+	for(int i=0; i<p.length; i++){
+	    array[i] = p[i];
 	}
 
     }
 
-    public static void mhelp(ArrayList <Comparable> aL){
-	if(aL.size() < 2){
-	    return;
+    public static int[] split(int[]ary){
+	if(ary.length == 1){
+	    return ary;
 	}
 
-	//split array
-	ArrayList <Comparable> a = new ArrayList <Comparable>();
-	ArrayList <Comparable> b = new ArrayList <Comparable>();
-	boolean temp = true;
-	
-	if(temp = !temp){
-	    a.add(aL.remove(0));
-	}else{
-	    b.add(aL.remove(0));
-	}
+	int[]a = new Arrays.copyOfRange(ary, 0, ary.length/2);
+	int[]b = new Arrays.copyOfRange(ary, ary.length/2, ary.length);
+	return merge(split(a), split(b));
+    }
 
-	//sort each half
-	mhelp(a);
-	mhelp(b);
+    public static int[] merge(int[]a, int[]b){
+	int[] res = new int[a.length + b.length];
+	int x1 = 0;
+	int x2 = 0;
 
-	//merge them
-	while(a.size() > 0 && b.size() > 0){
-	    if(a.get(0).compareTo(b.get(0)) > 0){
-	    aL.add(a.remove(0));
-	    }else{
-		aL.add(b.remove(0));
+	while(x1<=a.length && x2 <=b.length){
+	    if(x1== a.length){
+		for(; x2 < b.length; x2++){
+		    res[x1 + x2] = b[x2];
+		}
+		return res;
 	    }
+	    if(x2 == b.length){
+		for(;x1 < a.length; x1++){
+		    res[x1+x2] = a[x1];
+		}
+		return res;
+	    }
+	    if(a[x1] < b[x2]){
+		res[x1+x2] = a[x1];
+		x1++;
+	    }else{
+		res[x1+x2] = b[x2];
+		x2++;
+	    }
+
 	}
-	aL.addAll(a);
-	aL.addAll(b);
+	return res;
+
     }
 
     public static void main(String[] args){
-	
-	Arrays.sort(A);
+	Random r = new Random();
+
+	int[] x = new int[Integer.parseInt(args[0])];
+	for(int i = 0; i < x.length; i++){
+	    x[i] = r.nextInt(x.length * x.length) - x.length;
+	}
+
+	if(Integer.parseInt(args[1]) == 1){
+	    Sorts.mergesort(x);
+	}else{
+	    Arrays.sort(x);
+	}
+
 
     }
+   
 
 }

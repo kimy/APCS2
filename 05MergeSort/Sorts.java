@@ -3,14 +3,10 @@ import java.util.*;
 public class Sorts{
 
     public static void mergesort(int[]array){
-	if(int.length < 2){
-	    return;
+	int[] p = Sorts.split(array);
+	for(int i=0; i<p.length; i++){
+	    array[i] = p[i];
 	}
-
-	int[]a = new int[array.length /2];
-	int[]b = new int[array.length = a.length];
-
-	
 
     }
 
@@ -19,11 +15,11 @@ public class Sorts{
 	    return ary;
 	}
 
-	int[]a = Arrays.CopyOfRange(ary, 0, ary.length/2);
-	int[]b = Arrays.CopyOfRange(ary, ary.length/2, ary.length);
+	int[]a = new int[ary.length/2];
+	int[]b = new int[ary.length - a.length/2];
+	a = Arrays.copyOfRange(ary, 0, ary.length/2);
+	b = Arrays.copyOfRange(ary, ary.length/2, ary.length);
 	return merge(split(a), split(b));
-
-
     }
 
     public static int[] merge(int[]a, int[]b){
@@ -57,6 +53,22 @@ public class Sorts{
 
     }
 
+    public static void main(String[] args){
+	Random r = new Random();
+
+	int[] x = new int[Integer.parseInt(args[0])];
+	for(int i = 0; i < x.length; i++){
+	    x[i] = r.nextInt(x.length * x.length) - x.length;
+	}
+
+	if(Integer.parseInt(args[1]) == 1){
+	    Sorts.mergesort(x);
+	}else{
+	    Arrays.sort(x);
+	}
+
+
+    }
    
 
 }
