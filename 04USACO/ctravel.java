@@ -16,16 +16,15 @@ public class ctravel{
 	    String c = s.next();
 	    for(int b = 0; b < pasture[0].length; b++){
 		pasture[a][b] = c.charAt(b);
-		//c.charAt(b), not c.charAt(0)
+	
 	    }
 	}
 	r1 = Integer.parseInt(s.next())-1;
 	c1 = Integer.parseInt(s.next())-1;
 	r2 = Integer.parseInt(s.next())-1;
 	c2 = Integer.parseInt(s.next())-1;
-	//System.out.println("" + pasture.length + pasture[0].length + T + this + r1 + c1 + r2 + c2);
 	
-	//System.out.println(this);
+
     }
  
     public String toString(){ 
@@ -40,11 +39,11 @@ public class ctravel{
     }
 
     public int go(){
-	return goGo(r1, c1, 0);
+	return goH(r1, c1, 0);
     }
 
-    public int goGo(int startx, int starty, int newT){
-	//check if in range
+    public int goH(int startx, int starty, int newT){
+
 	if(startx < 0 ||
 	      startx >= pasture.length ||
 	      starty < 0 ||
@@ -52,7 +51,6 @@ public class ctravel{
 	    return 0;
 	}
 
-	//check if you have arrived at destination 
 	if(newT == T && (startx != r2 || starty != c2)){
 	    return 0;
 	}
@@ -61,40 +59,31 @@ public class ctravel{
 	    return 1;
 	}
 
-	//check if you're on 'forbidden space' 
 	if(pasture[startx][starty] == '*'){
 	    return 0;
 	}
 	
-	//the recursions can provide an answer then that's a proper choice 
-	if(goGo(startx+1, starty, newT+1) 
-	   +goGo(startx, starty+1, newT+1)
-	   +goGo(startx-1, starty+1, newT+1)
-	   +goGo(startx, starty-1, newT+1) != 0){
-	    return goGo(startx+1, starty, newT+1) 
-		+goGo(startx, starty+1, newT+1)
-		+goGo(startx-1, starty+1, newT+1)
-		+goGo(startx, starty-1, newT+1);
-	}
-	//recursion happens here 
-	return goGo(startx+1, starty, newT+1) 
-	    +goGo(startx, starty+1, newT+1)
-	    +goGo(startx-1, starty+1, newT+1)
-	    +goGo(startx, starty-1, newT+1);
+	if(goH(startx+1, starty, newT+1) 
+	   +goH(startx, starty+1, newT+1)
+	   +goH(startx-1, starty+1, newT+1)
+	   +goH(startx, starty-1, newT+1) != 0){
+	    return goH(startx+1, starty, newT+1) 
+		+goH(startx, starty+1, newT+1)
+		+goH(startx-1, starty+1, newT+1)
+		+goH(startx, starty-1, newT+1);
+	} 
+	return goH(startx+1, starty, newT+1) 
+	    +goH(startx, starty+1, newT+1)
+	    +goH(startx-1, starty+1, newT+1)
+	    +goH(startx, starty-1, newT+1);
     }
 
 
     public ctravel(String fileName) throws FileNotFoundException{
 	importFile(fileName);
-	//System.out.println(go(r1, c1));
     }
 
     public static void main(String[]args)throws FileNotFoundException{
-	//parse the file and import all information
-	//the cow will travel up down left or right 
-	//when the time is up, check to see if it's at the right position
-	//if it is at the right position...
-	//hmm how would you do the rest from here? 
 	ctravel A = new ctravel("ctravel.in");
 	PrintWriter writer = new PrintWriter("ctravel.out");
 	writer.println(A.go());
