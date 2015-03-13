@@ -4,12 +4,10 @@ public class MyLinkedList{
     private LNode current;
 
 
-    public MyLinkedList(int size){
-
-
+    public MyLinkedList(){
+	setHead(null);
+	setCurrent(head);
     }
-
-
 
     public void set(int index, LNode value){ 	
 	LNode temp;
@@ -50,22 +48,25 @@ public class MyLinkedList{
 	    if(count != index){
 		count ++;
 	    }else{
-		return current;
+		break;
 	    }
 	}
-
+	return current;
 
     } 
 
+
     public String toString(){
-	String res = "";
-	for(int i = 0; i< 
+	String res = "[";
+	LNode temp = head;
+	while(temp.getNext() != null){
+	    res += " " +  temp.getValue();
+	    temp = temp.getNext();
+	}
+	res += "]";
+	return res;
 
     }
-
-
-
-
 
 
 
