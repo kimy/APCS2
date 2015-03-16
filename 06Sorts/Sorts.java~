@@ -6,26 +6,26 @@ public class Sorts{
 	return name;
 
     }
-    private static void quicksort(int[] a , int low , int high) {
-        if (high >= a.length) {
+    private static void quicksort(int[] a , int l , int h) {
+        if (h >= a.length) {
             return;
         }
-        if (low < 0) {
+        if (l < 0) {
             return;
         }
 
-        if (low >= high) {
+        if (l >= h) {
             return;
         } else {
             int[] b = new int[a.length];
             System.arraycopy(a , 0 , b , 0 , a.length);
            
-	    int pivotIndex = (int)(low + ((high - low) / 2));
+	    int pivotIndex = (int)(l + ((h - l) / 2));
             int pivot = a[pivotIndex];
-            int lower = low;
-            int higher = high;
+            int lower = l;
+            int higher = h;
           
-	    for (int i = low ; i <= high ; i++) {
+	    for (int i = l ; i <= h ; i++) {
                 if (a[i] > pivot) {
                     b[higher] = a[i];
                     higher--;
@@ -40,8 +40,8 @@ public class Sorts{
 
             System.arraycopy(b , 0 , a , 0 , a.length);
 
-            quicksort(a , low , lower - 1);
-            quicksort(a , lower + 1 , high);
+            quicksort(a , l , lower - 1);
+            quicksort(a , lower + 1 , h);
         }
     }
 
