@@ -1,71 +1,120 @@
-public class MyLinkedList{
+import java.util.*;
+import java.io.*;
 
-    private LNode head;
-    private LNode current;
+public class MyLinkedList<T extends Comparable<T>>{
+    private LNode<T> head;
+    private LNode<T> tail;
+    private int size;
 
+    public String name(){
+	return "Kim,Yubin";
+    }
 
     public MyLinkedList(){
-	setHead(null);
-	setCurrent(head);
+	size = 0;
     }
 
-    public void set(int index, LNode value){ 	
-	LNode temp;
-	int count =0;
-	setCurrent(head);
-	while(current.getNext() != null){
-	    if(count != index){
-		setCurrent(current.getNext());
-		count++;
-	    }else{
-		current = value;
-		break;
-	    }
+    public MyLinkedList(LNode<T> x){
+	head = x;
+	size = 1;
+	while(x.getNext() != null){
+	    size++;
+	    x = head.getNext();
 	}
-
+	tail = x;
     }
 
-    public void setHead(int value){
-	head.setValue(value);
-    }
-
-    public LNode getHead(){
-	return head;
-    }
-
-    public void setCurrent(LNode n){
-	current = n;
-    }
-
-    public LNode getCurrent(){
-	return current;
-    }
-
-    public LNode get(int index){
-	int count = 0;
-	setCurrent(head);
-	while(current.getNext() != null){
-	    if(count != index){
-		count ++;
-	    }else{
-		break;
-	    }
+    public LNode<T> get(int index){
+	LNode<T> current = head;
+	for(int i = 0; i < index; i++){
+	    current = current.getNext();
 	}
 	return current;
+    }
 
-    } 
+    public int size(){
+	return size;
+    }
 
-    public String toString(){
-	String res = "[";
-	LNode temp = head;
+    public int indexOf(T val){
+	LNode<T> current = head;
+	int i = 0;
+	while(i<size() && current.getData().compareTo(val) != 0){
+	    current = current.getNext();
+	    i++;
+	}
+	if(i>=size()) return -1;
+	return i;
+    }
+
+    public void set(int index, T val){
+	LNode<T> current = head;
+	int i = 0;
+	while(i != index){
+	    current = current.getNext();
+	    i++;
+	}
+	current.setData(val);
+    }
+
+    public boolean add(T val){
+	LNode<T> current = new LNode<T>(val);
+	tail.setNext(current);
+	tail = current;
+	size++;
+	return true;
+    }
+
+    private boolean add(LNode<T> current){
+	LNode<T> temp = head;
 	while(temp.getNext() != null){
-	    res += " " +  temp.getValue();
 	    temp = temp.getNext();
 	}
-	res += "]";
-	return res;
-
+	temp.setNext(current);
+	size++;
+	return true;
     }
 
+    public boolean add(int index, T val){
+	LNode<T> current = head;
+	LNode<T> add = new LNode<T>(val);
+	int i = 0;
+	while(i< index - 1){
+	    current = current.getNext();
+	    i++;
+	}
+	LNode<T> next = current.getNext();
+	current.setNext(add);
+	add.setNext(next);
+	size++;
+	if(index == size() - 1) tail = add;
+	return true;
+    }
 
+    public T remove(int index){
+	LNode<T> current = head;
+	int i = 0;
+	while(i < index - 1){
+	    current = current.getNext();
+	    i++;
+	}
+	if(i>=size()) throw new IndexOutOfBoundsException();
+	LNode<T> next = current.getNext().getNext();
+	T val = current.getNext().getData();
+	current.setNext(next);
+	size--;
+	return val;
+    }
+
+    public String toString(){
+	LNode<T> current = head;
+	String ans = "[";
+	while(current.getNext() != null){
+	    ans+=current;
+	    current = current.getNext();
+	    ans+=",";
+	}
+	ans+=current + "]";
+	return ans;
+    }
 }

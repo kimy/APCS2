@@ -1,23 +1,23 @@
 public class LNode<T> {
 
-    private T value;
+    private T data;
     private LNode<T> next;
 
-    public LNode<T> (T val){
-	setValue(val);
+    public LNode (T val){
+	setData(val);
     }
 
-    public LNode<T>(T val, LNode nex){
-	setValue(val);
+    public LNode(T val, LNode<T> nex){
+	setData(val);
 	setNext(nex);
     }
 
-    public void setValue(T val){
-	value = val;
+    public void setData(T val){
+	data = val;
     }
 
-    public T getValue(){
-	return value;
+    public T getData(){
+	return data;
     }
 
     public void setNext(LNode<T> n){
@@ -29,7 +29,7 @@ public class LNode<T> {
     }
 
     public String toString(){
-	return "" + value;
+	return "" + data;
 
     }
 
