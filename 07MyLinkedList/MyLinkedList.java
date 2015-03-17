@@ -1,11 +1,48 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedList<T extends Comparable<T>>{
+public class MyLinkedList<T> {
     private LNode<T> head;
     private LNode<T> tail;
     private int size;
 
+    
+    /*
+    public class MLLIterator<MyLinkedList> implements Iterator<T>{
+
+	private LNode current;
+
+	public MLLIterator<MyLinkedList>(LNode data){
+	    data = current;
+	}
+
+	public boolean hasNext(){
+	    for(int i = 0; i < size; i++){
+
+
+	    }
+
+	}
+
+	public LNode next(){
+	    return current.getNext();
+	}
+
+
+	public void remove(){
+
+	}
+
+
+    }
+
+    public Iterator<T> iterator(){
+
+
+    }
+
+    */
+    
     public String name(){
 	return "Kim,Yubin";
     }
@@ -39,7 +76,7 @@ public class MyLinkedList<T extends Comparable<T>>{
     public int indexOf(T val){
 	LNode<T> current = head;
 	int i = 0;
-	while(i<size() && current.getData().compareTo(val) != 0){
+	while(i<size() && !(current.getData().equals("" + val))){
 	    current = current.getNext();
 	    i++;
 	}
