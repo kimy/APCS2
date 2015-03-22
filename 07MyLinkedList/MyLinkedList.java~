@@ -26,7 +26,6 @@ public class MyLinkedList<T> implements Iterable<T>  {
 		T data;
 		data = current.getData();
 		current = current.getNext();
-		return data;
 	    }else{
 		throw new NoSuchElementException();
 	    }
