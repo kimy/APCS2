@@ -49,12 +49,4 @@ public class Sorts{
         quicksort(a , 0 , a.length - 1);
     }
 
-    public static int[] qsorted(int[] a) {
-        int[] b = new int[a.length];
-        System.arraycopy(a , 0 , b , 0 , a.length);
-        quicksort(b , 0 , a.length - 1);
-        return b;
-    }
-
-
 }
