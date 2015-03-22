@@ -119,16 +119,23 @@ public class MyLinkedList<T> implements Iterable<T>  {
     public boolean add(int index, T val){
 	LNode<T> current = head;
 	LNode<T> add = new LNode<T>(val);
+
 	int i = 0;
+
 	while(i< index - 1){
 	    current = current.getNext();
 	    i++;
 	}
+
 	LNode<T> next = current.getNext();
+
 	current.setNext(add);
 	add.setNext(next);
 	size++;
-	if(index == size() - 1) tail = add;
+
+	if(index == size() - 1){
+	    tail = add;
+	}
 	return true;
     }
 
