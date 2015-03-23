@@ -9,6 +9,8 @@ public class MyQueue<T>{
 
 
     public void enqueue(T data){
+	LNode newHead = queue.getHead().getNext();
+	
 
     }
 
