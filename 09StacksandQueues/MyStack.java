@@ -9,15 +9,15 @@ public class MyStack<T>{
 	return data;
     }
 
-    public LNode pop(){
+    public T pop(){
 	LNode<T> temp = stack.get(0);
 	stack.remove(0);
-	return temp;
+	return temp.getData();
 	
     }
 
-    public LNode<T> peek(){
-	return stack.get(0);
+    public T peek(){
+	return stack.get(0).getData();
     }
 
 
