@@ -28,8 +28,13 @@ public class MyQueue<T>{
     }
 
 
+    public static void main(String[] args){
+
+	q = new MyQueue();
 
 
+
+    }
 
 
 }
