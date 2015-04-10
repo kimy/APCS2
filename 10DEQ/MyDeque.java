@@ -1,14 +1,15 @@
 import java.util.*;
 
-public class MyDeque{
+public class MyDeque<T>{
 
-    private int[] deque;
+    private T[] deque;
     private int head, tail, size;
 
-    
+
+    @SuppressWarnings("unchecked")    
     public MyDeque(int len){
 	
-	deque = new int[len];
+	deque = (T[]) (new Object[len]);
 	head = 0;
 	tail = len - 1;
 	size = 0;
@@ -23,25 +24,33 @@ public class MyDeque{
     public int size(){
 
 	return size;
+
     }
 
     
+    @SuppressWarnings("unchecked")
     public void resize(){
 
 	if(size == deque.length){
-	    int[] temp = new int[size * 2];
+
+	    T[] temp = (T[]) (new Object[size * 2]);
 	    for(int i=0; i<size; i++){
 		temp[i] = deque[(head+i) % size];
+
 	    }
+
 	    deque = temp;
-	    head =0;
+	    head = 0;
 	    tail = size - 1;
 	}
 
 
     }    
     
-    public void addFirst(int val){
+    public void addFirst(T val){
+	if(val == null){
+	    throw new NullPointerException();
+	}
 	resize();
 	head --;
 	if(head < 0){
@@ -52,7 +61,10 @@ public class MyDeque{
 	
     }
 
-    public void addLast(int val){
+    public void addLast(T val){
+	if(val == null){
+	    throw new NullPointerException();
+	}
 	resize();
 	tail++;
 	if(tail != 0 && tail >= deque.length){
@@ -64,12 +76,12 @@ public class MyDeque{
     }
 
 
-    public int removeFirst(){
+    public T removeFirst(){
 	if(size == 0){
 	    throw new NoSuchElementException();
 	}
-	int value = deque[head];
-	deque[head] = 0;
+	T value = deque[head];
+	deque[head] = null;
 	head ++;
 	if(head >= deque.length){
 	    head -= deque.length;
@@ -81,31 +93,33 @@ public class MyDeque{
 
 
 
-    public int removeLast(){
+    public T removeLast(){
 	if(size == 0){
 	    throw new NoSuchElementException();
 	}
-	int value = deque[tail];
-	deque[tail] = 0;
+
+	T value = deque[tail];
+	deque[tail] = null;
 	tail --;
+
 	if(tail < 0){
 	    tail += deque.length;
 	}
+
 	size --;
 	return value;
 
     }
 
-    public int getFirst(){
+    public T getFirst(){
 	if(size == 0){
 	    throw new NoSuchElementException();
 	}
 	return deque[head];
 
-
     }
 
-    public int getLast(){
+    public T getLast(){
 	if(size== 0){
 	    throw new NoSuchElementException();
 	}
