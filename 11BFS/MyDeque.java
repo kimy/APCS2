@@ -51,12 +51,18 @@ public class MyDeque<T>{
     public T removeSmallest(){
 
 
+
     }
 
     public T removeLargest(){
 
 
     }    
+
+    public void add(T value, int n){
+
+
+    }
 
 
     public void addFirst(T val){
