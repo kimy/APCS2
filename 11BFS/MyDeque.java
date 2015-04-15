@@ -29,28 +29,26 @@ public class MyDeque<T>{
 	return size;
 
     }
-
     
     @SuppressWarnings("unchecked")
-    public void resize(){
+	public void resize(){
 
 	if(size == deque.length){
 
 	    T[] temp = (T[]) (new Object[size * 2]);
+	    int[] prioritytemp = new int[size * 2];
 
 	    for(int i=0; i<size; i++){
 		temp[i] = deque[(head+i) % size];
-
+		prioritytemp[i] = priority[(head+i) % size];
 	    }
-
 	    deque = temp;
+	    priority = prioritytemp;
+
 	    head = 0;
 	    tail = size - 1;
 	}
     }
-    
-
-        
     
     //priority queue
     public T removeSmallest(){
