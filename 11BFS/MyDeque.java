@@ -32,9 +32,9 @@ public class MyDeque<T>{
     
     @SuppressWarnings("unchecked")
 	public void resize(){
-
+	
 	if(size == deque.length){
-
+	    
 	    T[] temp = (T[]) (new Object[size * 2]);
 	    int[] prioritytemp = new int[size * 2];
 
