@@ -24,7 +24,7 @@ public class Frontier{
 	    front.addLast(c);
 	}
 	if (mode == BEST){
-	    front.addLast(c);
+
 	}
 
     }

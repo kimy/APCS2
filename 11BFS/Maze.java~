@@ -128,7 +128,7 @@ public class Maze{
 
 	while(!front.isEmpty()){
 	    if (animate){
-		wait(20);
+		wait(100);
 		System.out.println(toString(animate));
 	    }
 	        
