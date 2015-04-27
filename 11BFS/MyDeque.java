@@ -9,13 +9,13 @@ public class MyDeque<T>{
 
     @SuppressWarnings("unchecked")    
     public MyDeque(int len){
-	
+
 	deque = (T[]) (new Object[len]);
 	priority = new int[len];
 	head = 0;
 	tail = len - 1;
-	size = 0;
-	
+	size = 0;	
+
     }
     
     public MyDeque(){
@@ -179,7 +179,5 @@ public class MyDeque<T>{
 	return deque[tail];
 
     }
-
-
 
 }

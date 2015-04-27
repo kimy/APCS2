@@ -9,11 +9,11 @@ public class Maze{
 
     private char[][] maze;
     private int maxx, maxy;
-    private int startx, starty, endx, endy;
+    private int startx, starty;
+    private int endx, endy;
     private int[] solution;
     private Coor start, end;
     private int solutionLen;
-
 
     private String go(int x,int y){
 	return ("\033[" + x + ";" + y + "H");
@@ -110,6 +110,14 @@ public class Maze{
 	return solve(0, animate);
     }
 
+    public boolean solveBest(boolean animate){
+	return solve(2, animate);
+    }
+
+    public boolean solveAstar(boolean animate){
+	return solve(3,animate);
+    }
+
     public boolean solveBFS(){
 	return solveBFS(false);
     }
@@ -117,9 +125,16 @@ public class Maze{
 	return solveDFS(false);
     }
 
+    public boolean solveBest(){
+	return solveBest(false);
+    }
+
+    public boolean solveAstar(){
+	return solveAstar(false);
+    }   
    
     public boolean solve(int mode, boolean animate){
-	Frontier front = new Frontier(mode);
+	Frontier front = new Frontier(mode, endx, endy);
 	Coor start = new Coor(startx, starty);
 
 	if (mode == 0 || mode == 1){
