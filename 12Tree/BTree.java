@@ -39,7 +39,7 @@ public class BTree<T> {
       ====================*/
     private void add( TreeNode<T> curr, TreeNode<T> bn ) {
 	if(curr == null){
-	    curr == bn;
+	    curr = bn;
 	}
 	if(curr.getLeft() == null){
 	    curr.setLeft(bn);
@@ -48,7 +48,7 @@ public class BTree<T> {
 	    curr.setRight(bn);
 	}else{
 	    int rand = r.nextInt(2);
-	    if(rand = 0){
+	    if(rand == 0){
 		add(curr.getRight(), bn);
 	    }else{
 		add(curr.getLeft(), bn);
@@ -89,7 +89,12 @@ public class BTree<T> {
       Prints out the elements in the tree by doing an
       in-order Traversal
       ====================*/
-    public void inOrder( TreeNode<E> curr ) {
+    public void inOrder( TreeNode<T> curr ) {
+	if(curr != null){
+	    inOrder(curr.getLeft());
+	    System.out.print(curr.getData());
+	    inOrder(curr.getRight());
+	}
     }
 
     /*======== public void postOrder() ==========
@@ -99,8 +104,14 @@ public class BTree<T> {
       Prints out the elements in the tree by doing a
       post-order Traversal    
       ====================*/
-    public void postOrder( TreeNode<E> curr ) {
-    }
+    public void postOrder( TreeNode<T> curr ) {
+	if(curr != null){
+	    postOrder(curr.getLeft());
+	    postOrder(curr.getRight());
+	    System.out.print(curr.getData());
+	}
+
+ }
     
     /*======== public int getHeight()) ==========
       Inputs:   
@@ -109,16 +120,24 @@ public class BTree<T> {
       Wrapper for the recursive getHeight method
       ====================*/
     public int getHeight() {
-	return getHeight( root );
+	return getHeight(root);
     }
     /*======== public int getHeight() ==========
       Inputs:   TreeNode<E> curr  
       Returns:  The height of the tree rooted at node curr
       
       ====================*/
-    public int getHeight( TreeNode<E> curr ) {
-	return -1;
-  
+    public int getHeight( TreeNode<T> curr ) {
+	return getHeight(curr,0);
+    }
+
+    private int getHeight(TreeNode<T> curr, int currHeight) {
+	if (curr == null){
+	    return currHeight;
+	}else{
+	    return Math.max(getHeight(curr.getLeft(), currHeight + 1), getHeight(curr.getRight(), currHeight + 1));
+	}
+    }
 	/*======== private String getLevel() ==========
       Inputs:   TreeNode<E> curr
                 int level
@@ -128,9 +147,13 @@ public class BTree<T> {
                ordered left -> right
       
 	       ====================*/
-	private String getLevel( TreeNode<E> curr, int level) {
-	    return "";
+    private String getLevel( TreeNode<T> curr, int level, int currLevel ) {
+	if (currLevel == level){
+	    return "" + curr.getData() + " ";
+	}else{
+	    return getLevel(curr.getLeft(), level, currLevel + 1) + getLevel(curr.getRight(), level, currLevel + 1);
 	}
+    }
 
     
 	/*======== public String toString()) ==========
@@ -151,17 +174,25 @@ public class BTree<T> {
           1      2
             3  4   5
 	    ====================*/
-	public String toString() {
-	    return "";
+    public String toString() {
+	/*
+	String tree = "";
+	int h = getHeight();
+	for (int l = 0; l < h; l ++){
+	    tree += getLevel(l) + "\n";
 	}
+	return tree;
+	*/
+	return "";  
+    }
+    
+    
+    public static void main( String[] args ) {
 	
-
-	public static void main( String[] args ) {
-
-	    BTree<Integer> t = new BTree<Integer>();
-
-	    for ( int i=0; i < 8; i++ ) 
-		t.add( i );
+	BTree<Integer> t = new BTree<Integer>();
+	
+	for ( int i=0; i < 8; i++ ) 
+	    t.add( i );
 	    System.out.println( "Pre-order: ");
 	    t.traverse( PRE_ORDER );
 	    System.out.println( "In-order: ");
@@ -169,7 +200,7 @@ public class BTree<T> {
 	    System.out.println( "Post-order: ");
 	    t.traverse( POST_ORDER );
 	    System.out.println( "Height: " + t.getHeight() );
-
+	    
 	    System.out.println( t );
-	}
     }
+}
