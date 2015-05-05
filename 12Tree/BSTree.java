@@ -256,20 +256,20 @@ public class BSTree <T extends Comparable> {
     public static void main( String[] args ) {
 	BSTree<String> tree = new BSTree<String>();
 	
-	tree.add("m");
-	tree.add("f");
-	tree.add("a");
-	tree.add("r");
-	tree.add("c");
-	tree.add("z");
-	tree.add("g");
+	tree.add("123");
+	tree.add("23");
+	tree.add("5");
+	tree.add("27");
+	tree.add("330");
+	tree.add("32");
+	tree.add("5");
 	System.out.println();
 	System.out.println(tree);
 	System.out.println();
 	tree.inOrder();
 	System.out.println();
 
-	tree.remove("f");
+	tree.remove("23");
 	System.out.println(tree);
 	System.out.println();
 	tree.inOrder();
