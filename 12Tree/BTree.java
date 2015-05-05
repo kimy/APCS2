@@ -269,17 +269,22 @@ public class BTree<T> {
 	
 	BTree<Integer> t = new BTree<Integer>();
 	
-	for ( int i=0; i < 16; i++ ){ 
-	    t.add( i );
-	}
-	    System.out.println( "Pre-order: ");
-	    t.traverse( PRE_ORDER );
-	    System.out.println( "In-order: ");
-	    t.traverse( IN_ORDER );
-	    System.out.println( "Post-order: ");
-	    t.traverse( POST_ORDER );
-	    System.out.println( "Height: " + t.getHeight() );
-	    
-	    System.out.println( t );
+	t.add(1);
+	t.add(2);
+	t.add(3);
+	t.add(4);
+	t.add(5);
+
+	System.out.println( "Pre-order: ");
+	t.traverse( PRE_ORDER );
+	System.out.println(t);
+	System.out.println( "In-order: ");
+	t.traverse( IN_ORDER );
+	System.out.println(t);
+	System.out.println( "Post-order: ");
+	t.traverse( POST_ORDER );
+	System.out.println( "Height: " + t.getHeight() );
+	
+	System.out.println(t);
     }
 }

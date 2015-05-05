@@ -36,5 +36,8 @@ public class TreeNode<T>{
 	right = righ;
     }
 
+    public String toString(){
+	return "" + data;
+    }
 
 }
