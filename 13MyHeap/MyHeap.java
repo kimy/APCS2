@@ -3,20 +3,28 @@ import java.io.*;
 
 public class MyHeap{
 
+
     private int[] heap;
-    private boolean isMax;
+    private boolean isMaxHeap;
 
-    public myHeap(){
-	isMax = true;
+    public MyHeap(){
+	isMaxHeap = true;
+	heap = new int[8];
     }
 
-    public myHeap(boolean max){
-	isMax = max;
+    public MyHeap(boolean isMax){
+	isMaxHeap = isMax;
+	heap = new int[8];
     }
+
 
     public String toString(){
-
-	return "";
+	String ans = "[";
+	for(int i = 0; i < heap.length - 1; i++){
+	    ans += heap[i] + ", ";
+	}
+	ans += heap[heap.length - 1] + "]";
+	return ans;
     }
 
     public int remove(){
@@ -25,16 +33,13 @@ public class MyHeap{
 
     }
 
-    public void add(){
-
-    }
-
     public void add(int n){
+	
 
     }
 
     public int peek(){
-	return 0; 
+	return heap[1]; 
 
     }
 
