@@ -34,7 +34,8 @@ public class MyHeap{
     }
 
     public void add(int n){
-	
+	heap[0] += 1;
+
 
     }
 
@@ -43,6 +44,12 @@ public class MyHeap{
 
     }
 
+    public static void main(String[] args){
+	x = newMyHeap();
+
+
+
+    }
 
 
 }

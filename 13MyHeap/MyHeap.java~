@@ -8,7 +8,7 @@ public class MyHeap{
     private boolean isMaxHeap;
 
     public MyHeap(){
-	isMax = true;
+	isMaxHeap = true;
 	heap = new int[8];
     }
 
@@ -34,7 +34,8 @@ public class MyHeap{
     }
 
     public void add(int n){
-	
+	heap[0] += 1;
+
 
     }
 
