@@ -204,7 +204,7 @@ public class BSTree <T extends Comparable> {
       _______._______________.
       ___._______._______._______.
       _.___.___.___.___.___.___.___.
-      ._._._._.._._._._._._._._._.
+      ._._._._._._._._._._._._._._._.
       In these diagrams, each dot represents wordLength characters,
       each underscore represents wordLength spaces, and, for any nodes
       that are null, the dots will be "replaced" by underscores.

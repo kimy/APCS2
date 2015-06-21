@@ -55,7 +55,7 @@ public class MyHeap{
 	}
     }
 
-    /*
+    
     public String toString(){
 	String ans = "[";
 	for(int i = 0; i < heap.length - 1; i++){
@@ -65,7 +65,7 @@ public class MyHeap{
 	return ans;
     }
 
-    */
+    /*
     //stolen from helen li
     public String toStringH(){
 	String ans = "[";
@@ -119,7 +119,7 @@ public class MyHeap{
 	return ans;
     }
 
-
+    */
 
     private void swap(int a, int b){
 	int temp = heap[a];
